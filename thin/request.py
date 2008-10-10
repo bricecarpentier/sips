@@ -1,7 +1,7 @@
 from ctypes import *
 from ctypes.util import find_library
 
-lib = CDLL(find_library('sips'))
+from thin import lib
 
 class CallParm(Structure):
     _fields_ = [
