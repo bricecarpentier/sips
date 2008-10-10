@@ -24,5 +24,8 @@ class Request(dict):
         self.soup = request.remote_call(self.cp, self.pathfile)
         self.bsoup = BeautifulSoup(self.soup)
         self.elements['action'] = self.bsoup.find('form')['action']
-        self.elements['encrypted'] = self.bsoup.find('input', {'name': 'DATA'})['value']
+        self.elements['encrypted'] = self.bsoup.find('input', 
+                                        {'name': 'DATA'})['value']
+        self.elements['means'] = [ item['name'] for item in 
+                                    self.bsoup.find('input', {'type': 'image'})
         return self.elements
