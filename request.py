@@ -23,6 +23,6 @@ class Request(dict):
     def encrypt(self):
         self.soup = request.remote_call(self.cp, self.pathfile)
         self.bsoup = BeautifulSoup(self.soup)
-        self.elements['action'] = bsoup.find('form')['action']
-        self.elements['encrypted'] = bsoup.find('input', {'name': 'DATA'})['value']
+        self.elements['action'] = self.bsoup.find('form')['action']
+        self.elements['encrypted'] = self.bsoup.find('input', {'name': 'DATA'})['value']
         return self.elements
