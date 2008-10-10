@@ -6,7 +6,7 @@ class Request(dict):
         self.cp = thin.request.init()
         self.soup = ''
         self.bsoup = ''
-        self.encrypted = ''
+        self.elements = {}
         self.pathfile = pathfile
     
     def __setitem__(self, i, y):
@@ -20,5 +20,6 @@ class Request(dict):
     def encrypt(self):
         self.soup = thin.request.remote_call(self.cp, self.pathfile)
         self.bsoup = BeautifulSoup(soup)
-        self.encrypted = bsoup.find('input', {'name': 'DATA'})['value']
-        return encrypted
+        self.elements['action'] = bsoup.find('form')['action']
+        self.elements['encrypted'] = bsoup.find('input', {'name': 'DATA'})['value']
+        return self.elements
