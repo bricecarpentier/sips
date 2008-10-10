@@ -1,5 +1,8 @@
+from __future__ import absolute_import
+
 from BeautifulSoup import BeautifulSoup
-import thin.request
+
+from .thin import request
 
 class Request(dict):
     def __init__(self, pathfile):

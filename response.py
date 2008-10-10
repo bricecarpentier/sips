@@ -1,4 +1,6 @@
-import thin.response
+from __future__ import absolute_import
+
+from .thin import response
 
 class Response(dict):
     
@@ -15,4 +17,4 @@ class Response(dict):
             raise KeyError, i
     
     def __decrypt(self):
-        self.rp = thin.response.remote_response(self.pathfile, self.message)
+        self.rp = response.remote_response(self.pathfile, self.message)
