@@ -27,5 +27,5 @@ class Request(dict):
         self.elements['encrypted'] = self.bsoup.find('input', 
                                         {'name': 'DATA'})['value']
         self.elements['means'] = [ item['name'] for item in 
-                                    self.bsoup.find('input', {'type': 'image'}) ]
+                                    self.bsoup.find('input', {'type': 'IMAGE'}) ]
         return self.elements
