@@ -22,7 +22,7 @@ class Request(dict):
     
     def encrypt(self):
         self.soup = request.remote_call(self.cp, self.pathfile)
-        self.bsoup = BeautifulSoup(soup)
+        self.bsoup = BeautifulSoup(self.soup)
         self.elements['action'] = bsoup.find('form')['action']
         self.elements['encrypted'] = bsoup.find('input', {'name': 'DATA'})['value']
         return self.elements
